@@ -19,6 +19,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::prefix('v1')->group(function(){
-    Route::get('/transactions', [TransactionController::class, 'index']);
+    // Route::get('/transactions', [TransactionController::class, 'index']);
+    // Route::post('/transactions', [TransactionController::class, 'store']);
+    // Route::put('/transactions/{id}', [TransactionController::class, 'update']);
+    // Route::get('/transactions/{id}', [TransactionController::class, 'show']);
+    // Route::delete('/transactions/{id}', [TransactionController::class, 'destroy']);
+    Route::resource('transactions', TransactionController::class)->except(['create', 'edit']);
 });
 
